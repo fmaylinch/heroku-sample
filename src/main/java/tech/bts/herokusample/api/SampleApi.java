@@ -5,6 +5,8 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,9 +22,10 @@ public class SampleApi {
 
     private MongoCollection<Document> words;
 
-    public SampleApi() {
+    @Autowired
+    public SampleApi(@Value("${mongoUri}") String mongoUri) {
 
-        final MongoClient mongoClient = MongoClients.create("mongodb+srv://test:12345678aA@bts-cluster-r1swc.mongodb.net/test");
+        final MongoClient mongoClient = MongoClients.create(mongoUri);
         final MongoDatabase database = mongoClient.getDatabase("test");
         this.words = database.getCollection("words");
     }
