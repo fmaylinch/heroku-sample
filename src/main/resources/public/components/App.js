@@ -5,13 +5,32 @@ class App extends React.Component {
         super(props);
 
         this.state = {
-            message: ""
+            message: "",
+            words: [ ]
         }
     }
 
     componentDidMount() {
 
         console.log("Component loaded");
+
+        this.loadWords();
+    }
+
+    loadWords() {
+
+        const wordsPromise = axios.get("/api/list");
+
+        wordsPromise.then(response => {
+            const words = response.data;
+            console.log(words);
+
+            // You need to call setState to change state values
+            this.setState( { words: words } );
+        });
+    }
+
+    retrieveHelloMessage() {
 
         const helloPromise = axios.get("/api/hello");
 
@@ -22,8 +41,6 @@ class App extends React.Component {
             // You need to call setState to change state values
             this.setState( { message: helloMessage } );
         });
-
-        console.log("API called");
     }
 
     render() {
@@ -31,9 +48,13 @@ class App extends React.Component {
         return (
             <div>
                 <h1>Sample Heroku App</h1>
-                <p>
-                    {this.state.message}
-                </p>
+                <div>
+                    {this.state.words.map(word => (
+                        <div className="word">
+                            {word}
+                        </div>
+                    ))}
+                </div>
             </div>
         );
     }
