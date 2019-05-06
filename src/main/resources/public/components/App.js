@@ -6,7 +6,11 @@ class App extends React.Component {
 
         this.state = {
             message: "",
-            words: [ ]
+            words: [ ],
+            user: {
+                email: "",
+                password: ""
+            }
         }
     }
 
@@ -38,9 +42,31 @@ class App extends React.Component {
             const helloMessage = response.data;
             console.log(helloMessage);
 
+            const update = {
+                message: helloMessage
+            };
+
             // You need to call setState to change state values
-            this.setState( { message: helloMessage } );
+            this.setState(update);
         });
+    }
+
+    register() {
+
+        const user = this.state.user;
+        console.log("registering " + user.email + " with password " + user.password);
+    }
+
+    updateField(event, property) {
+
+        console.log("input changed");
+
+        const value = event.target.value;
+
+        this.setState( (currentState) => {
+            currentState.user[property] = value;
+            return currentState;
+        } );
     }
 
     render() {
@@ -48,13 +74,28 @@ class App extends React.Component {
         return (
             <div>
                 <h1>Sample Heroku App</h1>
+
                 <div>
-                    {this.state.words.map(word => (
-                        <div className="word">
-                            {word}
-                        </div>
-                    ))}
+                    <div>
+                        Email: <input onChange={(event) => this.updateField(event, "email")} type="text"/>
+                    </div>
+                    <div>
+                        Password: <input onChange={(event) => this.updateField(event, "password")} type="text"/>
+                    </div>
+                    <div>
+                        <button onClick={(event) => this.register()}>Sign up</button>
+                    </div>
                 </div>
+
+                {/*
+                    <div>
+                        {this.state.words.map(word => (
+                            <div className="word">
+                                {word}
+                            </div>
+                        ))}
+                    </div>
+                */}
             </div>
         );
     }
