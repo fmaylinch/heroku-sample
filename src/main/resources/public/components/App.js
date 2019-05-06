@@ -1,6 +1,14 @@
 
 class App extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            message: ""
+        }
+    }
+
     componentDidMount() {
 
         console.log("Component loaded");
@@ -10,6 +18,9 @@ class App extends React.Component {
         helloPromise.then(response => {
             const helloMessage = response.data;
             console.log(helloMessage);
+
+            // You need to call setState to change state values
+            this.setState( { message: helloMessage } );
         });
 
         console.log("API called");
@@ -21,7 +32,7 @@ class App extends React.Component {
             <div>
                 <h1>Sample Heroku App</h1>
                 <p>
-                    This is a sample class
+                    {this.state.message}
                 </p>
             </div>
         );
