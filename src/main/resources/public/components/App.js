@@ -27,7 +27,7 @@ class App extends React.Component {
 
         wordsPromise.then(response => {
             const words = response.data;
-            console.log(words);
+            //onsole.log(words);
 
             // You need to call setState to change state values
             this.setState( { words: words } );
@@ -55,6 +55,12 @@ class App extends React.Component {
 
         const user = this.state.user;
         console.log("registering " + user.email + " with password " + user.password);
+
+        const promise = axios.post("/api/login/register", user);
+        promise.then(response => {
+            const message = response.data;
+            console.log("Message from registering: " + message);
+        });
     }
 
     updateField(event, property) {
