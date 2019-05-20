@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1"
@@ -11,12 +12,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "move-build": "mkdir -p ../main/resources/static && mv build/* ../main/resources/static/",
-    "clean-old-build": "rm -rf ../main/resources/static/* ",
-    "clean-new-build": "rm -rf build",
-    "postbuild": "npm run clean-old-build && npm run move-build && npm run clean-new-build"
+    "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": "react-app"
   },
