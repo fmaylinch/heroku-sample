@@ -1,2 +1,7 @@
+# IDEA
 .idea
 *.iml
+
+# ReactJS
+node_modules
+
