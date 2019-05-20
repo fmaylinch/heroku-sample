@@ -80,20 +80,29 @@ class App extends React.Component {
     render() {
 
         return (
-            <div>
-                <h1>Sample Heroku App</h1>
+            <div className="container">
 
-                <div>
-                    <div>
-                        Email: <input onChange={(event) => this.updateField(event, "email")} type="text"/>
+                <div className="row">
+                    <div className="column col-8">
+
+                        <h1>Sample Heroku App</h1>
+
+                        <div className="form">
+                            <div>
+                                Email: <input onChange={(event) => this.updateField(event, "email")} type="text"/>
+                            </div>
+                            <div>
+                                Password: <input onChange={(event) => this.updateField(event, "password")} type="text"/>
+                            </div>
+                            <div>
+                                <button onClick={(event) => this.register()}>Sign up</button>
+                            </div>
+                        </div>
+
                     </div>
-                    <div>
-                        Password: <input onChange={(event) => this.updateField(event, "password")} type="text"/>
-                    </div>
-                    <div>
-                        <button onClick={(event) => this.register()}>Sign up</button>
-                    </div>
+                    <div className="column col-4">Right</div>
                 </div>
+
 
                 {/*
                     <div>
