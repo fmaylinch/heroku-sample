@@ -18,10 +18,7 @@ class HelloFromName extends React.Component {
 
     retrieveHelloMessage() {
 
-        // This is retrieving the path value ":name"
-        const name = this.props.match.params.name;
-
-        const helloPromise = axios.get("/api/hello/" + name);
+        const helloPromise = axios.get("/api/hello/" + this.props.name);
 
         helloPromise.then(response => {
 

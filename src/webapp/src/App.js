@@ -17,10 +17,19 @@ class App extends React.Component {
                 <Menu/>
 
                 <Route path="/" exact component={Index} />
+
                 <Route path="/hello" exact component={Hello} />
-                <Route path="/hello-from-api" exact component={HelloFromApi} />
-                <Route path="/hello/:name" component={HelloName} />
+
+                <Route path="/hello-from-api" exact render={props =>
+                    <HelloName name="student" />
+                } />
+
+                <Route path="/hello/:name" render={props =>
+                    <HelloName name={props.match.params.name} />
+                } />
+
                 <Route path="/login" exact component={LoginForm} />
+
             </Router>
         );
     }
