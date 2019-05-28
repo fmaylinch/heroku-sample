@@ -4,6 +4,7 @@ import LoginForm from './LoginForm'
 import Hello from './Hello'
 import Menu from './Menu'
 import HelloFromApi from './HelloFromApi'
+import HelloName from './HelloName'
 
 class App extends React.Component {
 
@@ -18,6 +19,7 @@ class App extends React.Component {
                 <Route path="/" exact component={Index} />
                 <Route path="/hello" exact component={Hello} />
                 <Route path="/hello-from-api" exact component={HelloFromApi} />
+                <Route path="/hello/:name" component={HelloName} />
                 <Route path="/login" exact component={LoginForm} />
             </Router>
         );

@@ -32,6 +32,11 @@ public class SampleApi {
         return "Hello from sample app";
     }
 
+    @GetMapping("/hello/{name}")
+    public String sayHello(@PathVariable String name) {
+        return "Hello " + name + "!";
+    }
+
     // insert?word=dog
     @GetMapping("/insert")
     public String insertWord(@RequestParam String word) {
