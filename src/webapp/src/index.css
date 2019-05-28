@@ -8,3 +8,12 @@
   border: 1px solid blue;
   padding: 5px;
 }
+
+nav.main-menu {
+  margin: 20px;
+}
+
+nav.main-menu a {
+  color: green;
+  margin-right: 20px;
+}
