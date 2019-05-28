@@ -7,6 +7,7 @@ const Menu = (props) => (
         <div>
             <Link to="/">Home</Link>
             <Link to="/hello">Hello sample</Link>
+            <Link to="/hello-from-api">Hello from API</Link>
             <Link to="/login">Login page</Link>
         </div>
     </nav>

@@ -36,23 +36,6 @@ class LoginForm extends React.Component {
         });
     }
 
-    retrieveHelloMessage() {
-
-        const helloPromise = axios.get("/api/hello");
-
-        helloPromise.then(response => {
-            const helloMessage = response.data;
-            console.log(helloMessage);
-
-            const update = {
-                message: helloMessage
-            };
-
-            // You need to call setState to change state values
-            this.setState(update);
-        });
-    }
-
     register() {
 
         const user = this.state.user;
